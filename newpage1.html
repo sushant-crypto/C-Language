@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" class="transition">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C Programming</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .output-block {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            margin-top: 0.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.875rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-3xl font-bold text-gray-900">C Programming Concepts Explained</h1>
+            <p class="mt-2 text-gray-600">A complete breakdown of key topics with code examples and their results.</p>
+
+            <!-- 🌗 Theme Toggle Button -->
+            <div class="text-right mt-4">
+                <button id="theme-toggle" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-4 py-2 rounded shadow hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+                    Theme
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="py-10">
+        <section id="topics-container" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8" aria-label="C Programming Topics">
+            <!-- Topics will be dynamically loaded here -->
+        </section>
+
+        <!-- Navigation Button -->
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 text-center">
+            <a href="newpage2.html" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md shadow hover:bg-blue-700 transition">
+                Continue to More Topics
+            </a>
+        </div>
+    </main>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 text-center">
+            <a href="newpage.html" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md shadow hover:bg-blue-700 transition">
+                Go Back
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 mt-12">
+        <div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">This page is produced to provide basic knowledge of C programming.</p>
+        </div>
+    </footer>
+
+    <!-- 🧠 Your Original Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+           const topics = [
+  {
+    title: "25.Introduction to Functions",
+    description: "Modular programming using functions. Covers declaration, definition, and calling with return types and parameters.",
+    code: `int add(int a, int b) {
+  return a + b;
+}
+int result = add(3, 4);`,
+    output: "result = 7"
+  },
+  {
+    title: "26.Function Pointers",
+    description: "Pointers to functions allow dynamic invocation and callbacks.",
+    code: `int (*func)(int, int) = add;
+int result = func(5, 6);`,
+    output: "result = 11"
+  },
+  {
+    title: "27.Arrays and Pointers",
+    description: "Array name acts as a pointer. Supports pointer arithmetic and indexed access.",
+    code: `int arr[] = {1, 2, 3};
+int *ptr = arr;
+printf("%d", *(ptr + 1));`,
+    output: "2"
+  },
+  {
+    title: "28.Array of Pointers & Character Arrays",
+    description: "Demonstrates array of string pointers and differences between char[] and char*.",
+    code: `char *names[] = {"Alice", "Bob"};
+char str[] = "Hello";
+char *ptr = "World";`,
+    output: `names[0] = "Alice", str = "Hello", ptr = "World"`
+  },
+  {
+    title: "29.Introduction to Structures",
+    description: "Structures group related data using the struct keyword. Access members via dot operator.",
+    code: `struct Student {
+  int id;
+  char name[20];
+};`,
+    output: "Defines a Student structure with id and name"
+  },
+  {
+    title: "30.Structures and Pointers",
+    description: "Use pointers to structures and access members via arrow operator (->).",
+    code: `struct Student s = {1, "John"};
+struct Student *ptr = &s;
+printf("%s", ptr->name);`,
+    output: "John"
+  },
+  {
+    title: "31.Self-Referential Structures",
+    description: "Used in linked lists. Structure contains pointer to same type.",
+    code: `struct Node {
+  int data;
+  struct Node *next;
+};`,
+    output: "Defines a Node structure for linked list"
+  },
+  {
+    title: "32.Memory Allocation",
+    description: "Dynamic memory using malloc() and free(). Explains heap vs. stack.",
+    code: `int *ptr = (int *)malloc(sizeof(int) * 5);`,
+    output: "Allocates memory for 5 integers"
+  },
+  {
+    title: "33.malloc() Function",
+    description: "Allocates memory at runtime and returns a void pointer.",
+    code: `char *str = (char *)malloc(20 * sizeof(char));`,
+    output: "Allocates memory for 20 characters"
+  },
+  {
+    title: "34.Recursion",
+    description: "Function calling itself. Requires base and recursive cases.",
+    code: `int factorial(int n) {
+  if (n == 0) return 1;
+  return n * factorial(n - 1);
+}`,
+    output: "factorial(5) = 120"
+  },
+  {
+    title: "35.Strings",
+    description: "Strings are arrays of characters, null-terminated with '\\0'.",
+    code: `char str[] = "Hello";`,
+    output: "str = Hello"
+  },
+  {
+    title: "36.String Functions",
+    description: "Common functions: strlen(), strcpy(), strcmp(), strcat().",
+    code: `#include <string.h>
+int len = strlen("Hello");`,
+    output: "len = 5"
+  }
+];
+
+
+            const container = document.getElementById('topics-container');
+
+            topics.forEach(topic => {
+                const topicElement = document.createElement('div');
+                topicElement.className = 'bg-white rounded-lg shadow-md overflow-hidden';
+
+                topicElement.innerHTML = `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-gray-800">${topic.title}</h2>
+                        <p class="mt-3 text-gray-600" aria-label="Topic Description">${topic.description}</p>
+                        <div class="mt-4">
+                            <h3 class="font-semibold text-gray-700 mb-2">C Code Example:</h3>
+                            <pre class="bg-gray-100 p-4 rounded-md text-gray-800"><code>${topic.code}</code></pre>
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="font-semibold text-gray-700 mb-2">Output:</h3>
+                            <div class="output-block">${topic.output}</div>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(topicElement);
+            });
+
+            // 🌙 Theme Toggle Script
+            const toggleBtn = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+
+            if (localStorage.getItem('theme') === 'dark') {
+                html.classList.add('dark');
+            }
+
+            toggleBtn.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                const theme = html.classList.contains('dark') ? 'dark' : 'light';
+                localStorage.setItem('theme', theme);
+            });
+        });
+    </script>
+</body>
+</html>
