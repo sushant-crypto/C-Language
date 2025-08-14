@@ -6,8 +6,6 @@
     <title>C Programming Topics with Output</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -27,32 +25,30 @@
 </head>
 <body class="bg-gray-50">
 
-    <!-- Navigation Sidebar -->
-    <nav class="fixed top-0 left-0 h-full w-56 bg-white shadow-md z-10 p-4 overflow-y-auto" aria-label="Topic Navigation">
-        <h2 class="text-xl font-bold mb-4">Topics</h2>
-        <ul id="nav-links" class="space-y-2 text-blue-600 text-sm"></ul>
-    </nav>
-
     <!-- Header Section -->
-    <header class="ml-56 bg-white shadow-sm">
-        <div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold leading-tight text-gray-900 text-center">C Programming Concepts Explained</h1>
-            <p class="mt-2 text-center text-gray-600">A complete breakdown of key topics with code examples and their results.</p>
-            <div class="mt-4 text-center">
-                <input id="search-input" type="text" placeholder="Search topics..." class="border border-gray-300 rounded px-3 py-2 w-2/3 sm:w-1/2" aria-label="Search topics" />
-            </div>
+    <header class="bg-white shadow-sm">
+        <div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-3xl font-bold text-gray-900">C Programming Concepts Explained</h1>
+            <p class="mt-2 text-gray-600">A complete breakdown of key topics with code examples and their results.</p>
         </div>
     </header>
 
     <!-- Main Content Area -->
-    <main class="ml-56 py-10">
+    <main class="py-10">
         <section id="topics-container" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8" aria-label="C Programming Topics">
-            <!-- Topics will be injected here -->
+            <!-- Topics will be dynamically loaded here -->
         </section>
+
+        <!-- Navigation Button -->
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 text-center">
+            <a href="newpage.html" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md shadow hover:bg-blue-700 transition">
+                Go to Advanced Topics →
+            </a>
+        </div>
     </main>
 
     <!-- Footer Section -->
-    <footer class="ml-56 bg-gray-800 mt-12">
+    <footer class="bg-gray-800 mt-12">
         <div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
             <p class="text-gray-400">This page is produced to provide basic knowledge of C programming.</p>
         </div>
@@ -60,56 +56,32 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const topics = [/* same topic array as before */];
+            const topics = [/* your original topics array goes here */];
 
             const container = document.getElementById('topics-container');
-            const navLinks = document.getElementById('nav-links');
-            const searchInput = document.getElementById('search-input');
 
-            function renderTopics(filter = '') {
-                container.innerHTML = '';
-                navLinks.innerHTML = '';
+            topics.forEach(topic => {
+                const topicElement = document.createElement('div');
+                topicElement.className = 'bg-white rounded-lg shadow-md overflow-hidden';
 
-                topics.forEach((topic, index) => {
-                    if (!topic.title.toLowerCase().includes(filter.toLowerCase())) return;
-
-                    const topicId = `topic-${index}`;
-                    const topicElement = document.createElement('article');
-                    topicElement.className = 'bg-white rounded-lg shadow-md overflow-hidden';
-                    topicElement.id = topicId;
-
-                    topicElement.innerHTML = `
-                        <div class="p-6">
-                            <h2 class="text-2xl font-bold text-gray-800">${topic.title}</h2>
-                            <p class="mt-3 text-gray-600">${topic.description}</p>
-                            <div class="mt-4">
-                                <h3 class="font-semibold text-gray-700 mb-2">C Code Example:</h3>
-                                <pre class="bg-gray-100 p-4 rounded-md text-gray-800"><code class="language-c">${topic.code}</code></pre>
-                            </div>
-                            <div class="mt-4">
-                                <h3 class="font-semibold text-gray-700 mb-2">Output:</h3>
-                                <div class="output-block">${topic.output}</div>
-                            </div>
+                topicElement.innerHTML = `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-gray-800">${topic.title}</h2>
+                        <p class="mt-3 text-gray-600" aria-label="Topic Description">${topic.description}</p>
+                        <div class="mt-4">
+                            <h3 class="font-semibold text-gray-700 mb-2">C Code Example:</h3>
+                            <pre class="bg-gray-100 p-4 rounded-md text-gray-800"><code>${topic.code}</code></pre>
                         </div>
-                    `;
-                    container.appendChild(topicElement);
+                        <div class="mt-4">
+                            <h3 class="font-semibold text-gray-700 mb-2">Output:</h3>
+                            <div class="output-block">${topic.output}</div>
+                        </div>
+                    </div>
+                `;
 
-                    const navItem = document.createElement('li');
-                    navItem.innerHTML = `<a href="#${topicId}" class="hover:underline">${topic.title}</a>`;
-                    navLinks.appendChild(navItem);
-                });
-
-                Prism.highlightAll();
-            }
-
-            searchInput.addEventListener('input', () => {
-                renderTopics(searchInput.value);
+                container.appendChild(topicElement);
             });
-
-            renderTopics();
         });
     </script>
-
-    <a href="newpage.html" class="ml-56 block text-center text-blue-600 mt-4 hover:underline">Click here to go to the next page</a>
 </body>
 </html>
