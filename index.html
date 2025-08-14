@@ -25,8 +25,9 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 flex flex-col min-h-screen">
+<body class="bg-gray-50">
 
+    <!-- Header Section -->
     <header class="bg-white shadow-sm">
         <div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <h1 class="text-3xl font-bold leading-tight text-gray-900 text-center">
@@ -38,20 +39,25 @@
         </div>
     </header>
 
-    <main class="py-10 flex-grow">
-        <div id="topics-container" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-            </div>
-    </main>
 
-    <div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
-        <a href="newpage.html" class="inline-block bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-indigo-700 transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-            Next Page &rarr;
-        </a>
-    </div>
+    <!-- Main Content Area -->
+    <main class="py-10">
+        <div id="topics-container" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <!-- C programming topics will be dynamically loaded here by JavaScript -->
+        </div>
+    </main>  
     
-    <footer class="bg-gray-800 mt-auto">
+    <div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
+    <a href="newpage.html" 
+       class="inline-block bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-indigo-700 transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+        Next Page &rarr;
+    </a>
+</div>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 mt-12">
         <div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-gray-400">This Page Is Produced For Basic Knowledge Of C Programming.</p>
+            <p class="text-gray-400">This Page Is Produce For Basic Knowlage Of C Programming.</p>
         </div>
     </footer>
 
@@ -205,16 +211,6 @@ Loop finished.`
             ];
 
             const container = document.getElementById('topics-container');
-            
-            // **NEW** Helper function to escape special HTML characters
-            function escapeHtml(unsafe) {
-                return unsafe
-                     .replace(/&/g, "&amp;")
-                     .replace(/</g, "&lt;")
-                     .replace(/>/g, "&gt;")
-                     .replace(/"/g, "&quot;")
-                     .replace(/'/g, "&#039;");
-            }
 
             // Loop through each topic and create the HTML for it
             topics.forEach(topic => {
@@ -223,18 +219,18 @@ Loop finished.`
 
                 // Using template literals to build the inner HTML of the topic card
                 topicElement.innerHTML = `
-                        <div class="p-6">
-                            <h2 class="text-2xl font-bold text-gray-800">${topic.title}</h2>
-                            <p class="mt-3 text-gray-600">${topic.description}</p>
-                            <div class="mt-4">
-                                <h3 class="font-semibold text-gray-700 mb-2">C Code Example:</h3>
-                                <pre class="bg-gray-100 p-4 rounded-md text-gray-800"><code>${escapeHtml(topic.code)}</code></pre>
-                            </div>
-                            <div class="mt-4">
-                                <h3 class="font-semibold text-gray-700 mb-2">Output:</h3>
-                                <div class="output-block">${topic.output}</div>
-                            </div>
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-gray-800">${topic.title}</h2>
+                        <p class="mt-3 text-gray-600">${topic.description}</p>
+                        <div class="mt-4">
+                            <h3 class="font-semibold text-gray-700 mb-2">C Code Example:</h3>
+                            <pre class="bg-gray-100 p-4 rounded-md text-gray-800"><code>${topic.code}</code></pre>
                         </div>
+                        <div class="mt-4">
+                            <h3 class="font-semibold text-gray-700 mb-2">Output:</h3>
+                            <div class="output-block">${topic.output}</div>
+                        </div>
+                    </div>
                 `;
 
                 // Append the newly created topic element to the main container
@@ -243,5 +239,10 @@ Loop finished.`
         });
     </script>
 
+
+    
 </body>
 </html>
+
+
+
