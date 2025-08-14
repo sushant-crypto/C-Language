@@ -49,13 +49,13 @@
         <!-- Navigation Button -->
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 text-center">
             <a href="newpage.html" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md shadow hover:bg-blue-700 transition">
-                Continue to More Topics →
+                Continue to More Topics
             </a>
         </div>
     </main>
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 text-center">
             <a href="index.html" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md shadow hover:bg-blue-700 transition">
-                Go Back →
+                Go Back
             </a>
         </div>
     </main>
@@ -70,7 +70,111 @@
     <!-- 🧠 Your Original Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const topics = [/* your original topics array goes here */];
+            const topics = [
+  {
+    title: "13.Storage Class",
+    description: "Defines variable scope, lifetime, and linkage. Influences memory allocation and visibility. Four types: auto, register, static, extern.",
+    code: `int global = 5; // extern by default
+void func() {
+  int local = 10; // auto by default
+}`,
+    output: "global = 5, local = 10"
+  },
+  {
+    title: "14.Auto Storage Class",
+    description: "Default for local variables inside functions. Scope: local to the block. Lifetime: till the block ends. Stored in memory (not registers).",
+    code: `void demo() {
+  auto int a = 5; // 'auto' is optional
+  printf("%d\\n", a);
+}`,
+    output: "5"
+  },
+  {
+    title: "15.Static Storage Class",
+    description: "Retains value between function calls. Scope: local to the block. Lifetime: entire program. Useful for counters, caching, etc.",
+    code: `void counter() {
+  static int count = 0;
+  count++;
+  printf("Count: %d\\n", count);
+}`,
+    output: "Count: 1, Count: 2, ..."
+  },
+  {
+    title: "16.Static vs Dynamic Scoping",
+    description: "Static: Resolved at compile time (C uses this). Dynamic: Resolved at runtime (not supported in C). Static scoping uses the closest enclosing definition. Helps in predictable behavior and debugging.",
+    code: `int x = 10;
+void printX() {
+  printf("%d\\n", x); // refers to global x
+}`,
+    output: "10"
+  },
+  {
+    title: "17.Intro to Pointers",
+    description: "Pointers store memory addresses. Use * to declare and dereference. Use & to get address of a variable. Enables dynamic memory and efficient data handling.",
+    code: `int a = 10;
+int *p = &a;
+printf("Value: %d\\n", *p);`,
+    output: "Value: 10"
+  },
+  {
+    title: "18.Intro to Declaration",
+    description: "Declare pointers using *. Must match the type of data they point to. Can be initialized with NULL or valid address. Type safety matters in pointer operations.",
+    code: `int x = 5;
+int *ptr = &x;`,
+    output: "ptr points to x"
+  },
+  {
+    title: "19.Basics of Pointers",
+    description: "Dereferencing: *ptr gives value. Address-of: &var gives address. Pointer arithmetic: ptr + 1 moves to next element. Arrays and pointers are closely related.",
+    code: `int arr[] = {1, 2, 3};
+int *p = arr;
+printf("%d\\n", *(p + 1));`,
+    output: "2"
+  },
+  {
+    title: "20.Dangling Pointers",
+    description: "Point to memory that is no longer valid. Occurs after free() or returning local variable address. Leads to undefined behavior. Avoid by setting pointer to NULL.",
+    code: `int* getPointer() {
+  int x = 10;
+  return &x; // dangling pointer
+}`,
+    output: "Undefined behavior"
+  },
+  {
+    title: "21.Generic Pointers (void*)",
+    description: "Can point to any data type. Cannot be directly dereferenced. Must be typecast before use. Useful in generic functions like malloc.",
+    code: `void *ptr;
+int x = 5;
+ptr = &x;
+printf("%d\\n", *(int*)ptr);`,
+    output: "5"
+  },
+  {
+    title: "22.Little Endian",
+    description: "Least significant byte stored first. Common in x86 architecture. Affects byte-level operations. Important in networking and file I/O.",
+    code: `int x = 0x12345678;
+unsigned char *p = (unsigned char*)&x;
+printf("First byte: %x\\n", *p);`,
+    output: "78"
+  },
+  {
+    title: "23.Wild Pointers",
+    description: "Uninitialized pointers. Point to unknown memory. Dangerous: may crash or corrupt data. Always initialize pointers.",
+    code: `int *p; // wild pointer
+*p = 10; // undefined behavior`,
+    output: "Crash or garbage value"
+  },
+  {
+    title: "24.Null Pointers",
+    description: "Point to nothing (NULL). Safe to check before dereferencing. Used to signal absence of data. Prevents accidental access to garbage memory.",
+    code: `int *p = NULL;
+if (p == NULL) {
+  printf("Pointer is null\\n");
+}`,
+    output: "Pointer is null"
+  }
+];
+
 
             const container = document.getElementById('topics-container');
 
