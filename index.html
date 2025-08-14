@@ -38,7 +38,6 @@
         </div>
     </header>
 
-
     <main class="py-10 flex-grow">
         <div id="topics-container" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             </div>
@@ -49,7 +48,7 @@
             Next Page &rarr;
         </a>
     </div>
-
+    
     <footer class="bg-gray-800 mt-auto">
         <div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
             <p class="text-gray-400">This Page Is Produced For Basic Knowledge Of C Programming.</p>
@@ -206,6 +205,16 @@ Loop finished.`
             ];
 
             const container = document.getElementById('topics-container');
+            
+            // **NEW** Helper function to escape special HTML characters
+            function escapeHtml(unsafe) {
+                return unsafe
+                     .replace(/&/g, "&amp;")
+                     .replace(/</g, "&lt;")
+                     .replace(/>/g, "&gt;")
+                     .replace(/"/g, "&quot;")
+                     .replace(/'/g, "&#039;");
+            }
 
             // Loop through each topic and create the HTML for it
             topics.forEach(topic => {
@@ -219,7 +228,7 @@ Loop finished.`
                             <p class="mt-3 text-gray-600">${topic.description}</p>
                             <div class="mt-4">
                                 <h3 class="font-semibold text-gray-700 mb-2">C Code Example:</h3>
-                                <pre class="bg-gray-100 p-4 rounded-md text-gray-800"><code>${topic.code}</code></pre>
+                                <pre class="bg-gray-100 p-4 rounded-md text-gray-800"><code>${escapeHtml(topic.code)}</code></pre>
                             </div>
                             <div class="mt-4">
                                 <h3 class="font-semibold text-gray-700 mb-2">Output:</h3>
