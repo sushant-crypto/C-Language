@@ -1,190 +1,167 @@
 <!DOCTYPE html>
 <html lang="en" class="transition">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>C Programming P4</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .output-block {
-            background-color: #2d3748;
-            color: #e2e8f0;
-            padding: 0.75rem 1rem;
-            border-radius: 0.375rem;
-            margin-top: 0.5rem;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.875rem;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C Programming P4</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .output-block {
+      background-color: #2d3748;
+      color: #e2e8f0;
+      padding: 0.75rem 1rem;
+      border-radius: 0.375rem;
+      margin-top: 0.5rem;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.875rem;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  </style>
 </head>
 <body class="bg-gray-50">
 
-    <!-- Header Section -->
-    <header class="bg-white shadow-sm">
-        <div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-3xl font-bold text-gray-900">C Programming Concepts Explained</h1>
-            <p class="mt-2 text-gray-600">A complete breakdown of key topics with code examples and their results.</p>
+  <!-- Header Section -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-3xl font-bold text-gray-900">C Programming Concepts Explained</h1>
+      <p class="mt-2 text-gray-600">A complete breakdown of key topics with code examples and their results.</p>
 
-            <!-- 🌗 Theme Toggle Button -->
-            <div class="text-right mt-4">
-                <button id="theme-toggle" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-4 py-2 rounded shadow hover:bg-gray-300 dark:hover:bg-gray-600 transition">
-                    Theme
-                </button>
+      <!-- 🌗 Theme Toggle Button -->
+      <div class="text-right mt-4">
+        <button id="theme-toggle" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-4 py-2 rounded shadow hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+          Theme
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="py-10">
+    <section id="topics-container" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8" aria-label="C Programming Topics">
+      <!-- Topics will be dynamically loaded here -->
+    </section>
+
+    <!-- Navigation Buttons -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 text-center space-x-4">
+      <a href="lastPage.html" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md shadow hover:bg-blue-700 transition">
+        Continue to More Topics
+      </a>
+      <a href="newpage1.html" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md shadow hover:bg-blue-700 transition">
+        Go Back
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-gray-800 mt-12">
+    <div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-gray-400">This page is produced to provide basic knowledge of C programming.</p>
+    </div>
+  </footer>
+
+  <!-- 🧠 Your Original Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const topics = [
+        {
+          title: "37. Union in C",
+          description: "Unions allow storing different data types in the same memory location. Only one member can hold a value at a time.",
+          code: `union Data {\n  int i;\n  float f;\n  char str[20];\n};\nunion Data d;\nd.i = 10;`,
+          output: `Only 'i' holds value. Memory shared among all members.`
+        },
+        {
+          title: "38. Enumerator (enum)",
+          description: "Enums define named integer constants. Useful for readable code and managing states.",
+          code: `enum Week {Mon, Tue, Wed, Thu, Fri};\nenum Week today = Wed;`,
+          output: `today = 2`
+        },
+        {
+          title: "39. Important Questions on Pointers",
+          description: "Pointers store addresses. Key concepts include dereferencing, pointer arithmetic, and usage with arrays/functions.",
+          code: `int a = 5;\nint *p = &a;\nprintf("%d", *p);`,
+          output: `5`
+        },
+        {
+          title: "40. File Handling in C",
+          description: "File handling enables reading/writing files using FILE pointers and functions like fopen(), fclose(), fprintf().",
+          code: `FILE *fp;\nfp = fopen("data.txt", "w");\nfprintf(fp, "Hello!");\nfclose(fp);`,
+          output: `Writes 'Hello!' to data.txt`
+        },
+        {
+          title: "41. fopen() Function",
+          description: "Opens a file and returns a pointer. Modes include 'r', 'w', 'a'. Returns NULL if file can't be opened.",
+          code: `FILE *fp = fopen("info.txt", "r");\nif (fp == NULL) {\n  printf("Error!");\n}`,
+          output: `Displays 'Error!' if file doesn't exist`
+        },
+        {
+          title: "42. Practice Questions on Operators",
+          description: "C operators include arithmetic, logical, relational, and bitwise. Understand precedence and usage.",
+          code: `int a = 5, b = 3;\nprintf("%d", a & b);`,
+          output: `1`
+        },
+        {
+          title: "43. For Loop",
+          description: "Used for definite iteration. Syntax: for(init; condition; increment). Ideal for counting and arrays.",
+          code: `for(int i = 0; i < 5; i++) {\n  printf("%d ", i);\n}`,
+          output: `0 1 2 3 4`
+        },
+        {
+          title: "44. Tokens in C",
+          description: "Tokens are smallest units in C: keywords, identifiers, constants, operators, symbols.",
+          code: `int x = 10;`,
+          output: `Tokens: int, x, =, 10, ;`
+        },
+        {
+          title: "45. Identifiers",
+          description: "Identifiers name variables, functions, arrays. Must start with letter/underscore, can't be keywords.",
+          code: `int totalMarks;`,
+          output: `totalMarks is a valid identifier`
+        }
+      ];
+
+      const container = document.getElementById('topics-container');
+
+      topics.forEach(topic => {
+        const topicElement = document.createElement('div');
+        topicElement.className = 'bg-white rounded-lg shadow-md overflow-hidden';
+
+        topicElement.innerHTML = `
+          <div class="p-6">
+            <h2 class="text-2xl font-bold text-gray-800">${topic.title}</h2>
+            <p class="mt-3 text-gray-600" aria-label="Topic Description">${topic.description}</p>
+            <div class="mt-4">
+              <h3 class="font-semibold text-gray-700 mb-2">C Code Example:</h3>
+              <pre class="bg-gray-100 p-4 rounded-md text-gray-800"><code>${topic.code}</code></pre>
             </div>
-        </div>
-    </header>
+            <div class="mt-4">
+              <h3 class="font-semibold text-gray-700 mb-2">Output:</h3>
+              <div class="output-block">${topic.output}</div>
+            </div>
+          </div>
+        `;
 
-    <!-- Main Content Area -->
-    <main class="py-10">
-        <section id="topics-container" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8" aria-label="C Programming Topics">
-            <!-- Topics will be dynamically loaded here -->
-        </section>
+        container.appendChild(topicElement);
+      });
 
-        <!-- Navigation Button -->
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 text-center">
-            <a href="lastPage.html" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md shadow hover:bg-blue-700 transition">
-                Continue to More Topics
-            </a>
-        </div>
-    </main>
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 text-center">
-            <a href="newpage1.html" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md shadow hover:bg-blue-700 transition">
-                Go Back
-            </a>
-        </div>
-    </main>
+      // 🌙 Theme Toggle Script
+      const toggleBtn = document.getElementById('theme-toggle');
+      const html = document.documentElement;
 
-    <!-- Footer Section -->
-    <footer class="bg-gray-800 mt-12">
-        <div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-gray-400">This page is produced to provide basic knowledge of C programming.</p>
-        </div>
-    </footer>
+      if (localStorage.getItem('theme') === 'dark') {
+        html.classList.add('dark');
+      }
 
-    <!-- 🧠 Your Original Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-           const topics = [
-  {
-  title: "37.Union in C",
-  description: "Unions allow storing different data types in the same memory location. Only one member can hold a value at a time.",
-  code: `union Data {
-  int i;
-  float f;
-  char str[20];
-};
-union Data d;
-d.i = 10;`,
-  output: `Only 'i' holds value. Memory shared among all members.`
-},
-{
-  title: "38.Enumerator (enum)",
-  description: "Enums define named integer constants. Useful for readable code and managing states.",
-  code: `enum Week {Mon, Tue, Wed, Thu, Fri};
-enum Week today = Wed;`,
-  output: `today = 2`
-},
-{
-  title: "39.Important Questions on Pointers",
-  description: "Pointers store addresses. Key concepts include dereferencing, pointer arithmetic, and usage with arrays/functions.",
-  code: `int a = 5;
-int *p = &a;
-printf("%d", *p);`,
-  output: `5`
-},
-{
-  title: "40.File Handling in C",
-  description: "File handling enables reading/writing files using FILE pointers and functions like fopen(), fclose(), fprintf().",
-  code: `FILE *fp;
-fp = fopen("data.txt", "w");
-fprintf(fp, "Hello!");
-fclose(fp);`,
-  output: `Writes 'Hello!' to data.txt`
-},
-{
-  title: "41.fopen() Function",
-  description: "Opens a file and returns a pointer. Modes include 'r', 'w', 'a'. Returns NULL if file can't be opened.",
-  code: `FILE *fp = fopen("info.txt", "r");
-if (fp == NULL) {
-  printf("Error!");
-}`,
-  output: `Displays 'Error!' if file doesn't exist`
-},
-{
-  title: "42.Practice Questions on Operators",
-  description: "C operators include arithmetic, logical, relational, and bitwise. Understand precedence and usage.",
-  code: `int a = 5, b = 3;
-printf("%d", a & b);`,
-  output: `1`
-},
-{
-  title: "43.For Loop",
-  description: "Used for definite iteration. Syntax: for(init; condition; increment). Ideal for counting and arrays.",
-  code: `for(int i = 0; i < 5; i++) {
-  printf("%d ", i);
-}`,
-  output: `0 1 2 3 4`
-},
-{
-  title: "44.Tokens in C",
-  description: "Tokens are smallest units in C: keywords, identifiers, constants, operators, symbols.",
-  code: `int x = 10;`,
-  output: `Tokens: int, x, =, 10, ;`
-},
-{
-  title: "45.Identifiers",
-  description: "Identifiers name variables, functions, arrays. Must start with letter/underscore, can't be keywords.",
-  code: `int totalMarks;`,
-  output: `totalMarks is a valid identifier`
-}
-
-];
-
-
-            const container = document.getElementById('topics-container');
-
-            topics.forEach(topic => {
-                const topicElement = document.createElement('div');
-                topicElement.className = 'bg-white rounded-lg shadow-md overflow-hidden';
-
-                topicElement.innerHTML = `
-                    <div class="p-6">
-                        <h2 class="text-2xl font-bold text-gray-800">${topic.title}</h2>
-                        <p class="mt-3 text-gray-600" aria-label="Topic Description">${topic.description}</p>
-                        <div class="mt-4">
-                            <h3 class="font-semibold text-gray-700 mb-2">C Code Example:</h3>
-                            <pre class="bg-gray-100 p-4 rounded-md text-gray-800"><code>${topic.code}</code></pre>
-                        </div>
-                        <div class="mt-4">
-                            <h3 class="font-semibold text-gray-700 mb-2">Output:</h3>
-                            <div class="output-block">${topic.output}</div>
-                        </div>
-                    </div>
-                `;
-
-                container.appendChild(topicElement);
-            });
-
-            // 🌙 Theme Toggle Script
-            const toggleBtn = document.getElementById('theme-toggle');
-            const html = document.documentElement;
-
-            if (localStorage.getItem('theme') === 'dark') {
-                html.classList.add('dark');
-            }
-
-            toggleBtn.addEventListener('click', () => {
-                html.classList.toggle('dark');
-                const theme = html.classList.contains('dark') ? 'dark' : 'light';
-                localStorage.setItem('theme', theme);
-            });
-        });
-    </script>
+      toggleBtn.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        const theme = html.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('theme', theme);
+      });
+    });
+  </script>
 </body>
 </html>
