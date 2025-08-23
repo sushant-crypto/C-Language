@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Wrap-Up</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #007acc;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      margin-top: 2rem;
+      color: #444;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    .thank-you {
+      margin-top: 2rem;
+      font-style: italic;
+      color: #555;
+    }
+    .nav-buttons {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+    }
+    button {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #007acc;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Final Thoughts & Future Courses</h1>
+    <p>Thank you for exploring this C programming course. Whether you're just starting out or brushing up on fundamentals, I hope this site made your learning smoother and more enjoyable.</p>
+
+    <h2>🚀 What's Next?</h2>
+    <ul id="course-list">
+      <!-- JavaScript will populate this -->
+    </ul>
+
+    <h2 class="thank-you">🙏 To everyone who read, practiced, and shared this site: your curiosity fuels this project.</h2>
+    <p>Feel free to reach out with suggestions, feedback, or requests for new topics. Let’s keep learning together.</p>
+
+    <div class="nav-buttons">
+      <button onclick="window.location.href='newpage2.html'">🏠 Back to Home</button>
+      <button onclick="window.location.href='https://sushant-crypto.github.io/my-projects/'">📚 Explore Future Courses</button>
+    </div>
+  </div>
+
+  <script>
+    const upcomingCourses = [
+      "C++ – Object-oriented programming and STL",
+      "Python – Beginner to intermediate with real-world projects",
+      "JavaScript – Web interactivity and DOM manipulation",
+      "Web Development – HTML, CSS, React, and backend essentials"
+    ];
+
+    const courseList = document.getElementById("course-list");
+    upcomingCourses.forEach(course => {
+      const li = document.createElement("li");
+      li.textContent = course;
+      courseList.appendChild(li);
+    });
+  </script>
+</body>
+</html>
